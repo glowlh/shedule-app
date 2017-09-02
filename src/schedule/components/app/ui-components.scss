@@ -1,0 +1,22 @@
+.button {
+  outline: none;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  background: #26a69a;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &--delete {
+    border: 2px solid #870000;
+    background: none;
+    border-radius: 30px;
+    transition: 0.3s;
+
+    &:hover {
+      background: #870000;
+      color: #fff;
+    }
+  }
+}
