@@ -2,6 +2,20 @@ import React, { Component } from 'react';
 
 class SchoolItem extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.props = {
+      onDelete: () => {},
+    };
+
+    this.onClickBtn = this.onClickBtn.bind(this);
+  }
+
+  onClickBtn() {
+    this.props.onDelete(this.props.id);
+  }
+
   render() {
     return (
       <div className={'school-item'}>
@@ -12,6 +26,7 @@ class SchoolItem extends Component {
 
         <button
           className={'button button--delete'}
+          onClick={this.onClickBtn}
         >
           delete
         </button>

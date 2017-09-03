@@ -1,14 +1,26 @@
 import appActions from './actions';
 
 const initialState = {
-  id: 0,
-  text: 'Way',
+  schools: [],
 };
 
 const app = (state = initialState, action) => {
   switch (action.type) {
-    case appActions.INIT:
-      return {...state, text: action.payload};
+    case appActions.ADD_SCHOOL: {
+      const newState = {...state};
+      const item = {...action.payload};
+      item.id = state.schools.length;
+      newState.schools.push(item);
+
+      return newState;
+    }
+    case appActions.DELETE_SCHOOL: {
+      const id = action.payload;
+      const schools = [...state.schools].filter(it => it.id !== id);
+      const newState = {...state, schools};
+
+      return newState;
+    }
     default:
       return state;
   }
