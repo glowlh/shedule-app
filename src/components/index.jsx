@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FormAddSchool from './form-add-school';
-import SchoolItem from './school-item';
+import FormAddSchool from './form-add-school/index';
+import SchoolItem from './school-item/index';
+import { toggleDeleteSchool } from './form-add-school/actions';
 import './index.css';
 
 class App extends Component {
@@ -14,6 +15,10 @@ class App extends Component {
 
   onDeleteSchool(id) {
     this.props.onDeleteSchool(id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.dir(nextProps);
   }
 
   render() {
@@ -37,11 +42,6 @@ class App extends Component {
     )
   }
 }
-
-const toggleDeleteSchool = (payload) => ({
-  type: 'DELETE_SCHOOL',
-  payload,
-});
 
 const mapStateToProps = (state) => {
   return {

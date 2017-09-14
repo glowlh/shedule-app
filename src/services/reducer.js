@@ -1,4 +1,5 @@
-import appActions from './actions';
+import { createStore } from 'redux';
+import appActions from '../components/app/form-add-school/types';
 
 const initialState = {
   schools: [],
@@ -7,16 +8,15 @@ const initialState = {
 const app = (state = initialState, action) => {
   switch (action.type) {
     case appActions.ADD_SCHOOL: {
-      const newState = {...state};
       const item = {...action.payload};
       item.id = state.schools.length;
-      newState.schools.push(item);
+      const schools = [...state.schools, item];
 
-      return newState;
+      return {...state, schools};
     }
     case appActions.DELETE_SCHOOL: {
       const id = action.payload;
-      const schools = [...state.schools].filter(it => it.id !== id);
+      const schools = state.schools.filter(it => it.id !== id);
       const newState = {...state, schools};
 
       return newState;
@@ -26,4 +26,5 @@ const app = (state = initialState, action) => {
   }
 };
 
-export default app;
+const store = createStore(app);
+export default store;

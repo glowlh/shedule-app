@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addSchool } from './actions';
 
 class FormAddSchool extends Component {
 
@@ -61,12 +62,7 @@ class FormAddSchool extends Component {
   }
 }
 
-const toggleAddSchool = (payload) => ({
-  type: 'ADD_SCHOOL',
-  payload,
-});
-
 export default connect(
   null,
-  { onAdd: toggleAddSchool },
+  { onAdd: addSchool },
 )(FormAddSchool);

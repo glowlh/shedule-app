@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SchoolItem extends Component {
 
-  constructor(props) {
-    super(props);
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    count: PropTypes.number.isRequired,
+    onDelete: PropTypes.func.isRequired,
+  };
 
-    this.props = {
-      onDelete: () => {},
-    };
-
-    this.onClickBtn = this.onClickBtn.bind(this);
+  componentWillMount() {
+    this.handleClickBtn = this.handleClickBtn.bind(this);
   }
 
-  onClickBtn() {
+  handleClickBtn() {
     this.props.onDelete(this.props.id);
   }
 
@@ -26,7 +27,7 @@ class SchoolItem extends Component {
 
         <button
           className={'button button--delete'}
-          onClick={this.onClickBtn}
+          onClick={this.handleClickBtn}
         >
           delete
         </button>
