@@ -1,10 +1,12 @@
 import { createStore } from 'redux';
 import schoolActionTypes from '../components/school/types';
 import classroomActionTypes from '../components/classroom/types';
+import teacherActionTypes from '../components/teacher/types';
 
 const initialState = {
   schools: [],
   classrooms: [],
+  teachers: [],
 };
 
 const app = (state = initialState, action) => {
@@ -32,6 +34,18 @@ const app = (state = initialState, action) => {
       const id = action.payload;
       const classrooms = state.classrooms.filter(it => it.id !== id);
       return {...state, classrooms};
+    }
+    case teacherActionTypes.ADD_TEACHER: {
+      const item = {...action.payload};
+      item.id = state.teachers.length;
+      const teachers = [...state.teachers, item];
+
+      return {...state, teachers};
+    }
+    case teacherActionTypes.DELETE_TEACHER: {
+      const id = action.payload;
+      const teachers = state.teachers.filter(it => it.id !== id);
+      return {...state, teachers};
     }
     default:
       return state;
