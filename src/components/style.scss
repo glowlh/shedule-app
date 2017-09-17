@@ -7,3 +7,9 @@ body {
   max-width: 900px;
   margin: auto;
 }
+
+input,
+textarea,
+button {
+  box-sizing: border-box;
+}
