@@ -18,7 +18,7 @@ class ClassroomItem extends Component {
         <div className="list-item__info info">
           <div className="text info__text">Classroom '{this.props.name}'</div>
           <div className="text info__text">have {this.props.count} seats</div>
-          <div className="text info__text">Description: {this.props.description}</div>
+          <div className="text info__text">Description: <i>{this.props.description}</i></div>
         </div>
 
         <button
