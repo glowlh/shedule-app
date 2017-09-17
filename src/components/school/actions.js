@@ -1,4 +1,4 @@
-export const toggleDeleteSchool = (payload) => ({
+export const deleteSchool = (payload) => ({
   type: 'DELETE_SCHOOL',
   payload,
 });

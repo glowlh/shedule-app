@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FormAddSchool from './form-add-school/index';
-import SchoolItem from './school-item/index';
-import { toggleDeleteSchool } from './form-add-school/actions';
-import './index.css';
+import FormAddSchool from './school/form-add-school/index';
+import SchoolItem from './school/school-item/index';
+import './ui-components.css';
+import  './style.css';
 
 class App extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.onDeleteSchool = this.onDeleteSchool.bind(this);
-  }
-
-  onDeleteSchool(id) {
-    this.props.onDeleteSchool(id);
-  }
 
   componentWillReceiveProps(nextProps) {
     console.dir(nextProps);
@@ -28,8 +18,7 @@ class App extends Component {
           key={it.id}
           id={it.id}
           name={it.name}
-          count={it.count}
-          onDelete={this.onDeleteSchool}
+          count={parseInt(it.count, 10)}
         />
       );
 
@@ -37,7 +26,7 @@ class App extends Component {
       <div className={'app wrapper'}>
         <h2>Schools</h2>
         <FormAddSchool />
-        {schoolList}
+        { schoolList }
       </div>
     )
   }
@@ -51,5 +40,4 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { onDeleteSchool: toggleDeleteSchool },
 )(App);

@@ -20,3 +20,52 @@
     }
   }
 }
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0 10px 15px;
+  border-left: 2px solid #26a69a;
+  margin-bottom: 20px;
+
+  &__info {
+    display: flex;
+  }
+}
+
+.info__text {
+  margin-right: 10px;
+}
+
+.container {
+  &--inline {
+    display: flex;
+  }
+
+  &--column {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.form {
+  margin-bottom: 30px;
+
+  &__field {
+    margin-right: 15px;
+  }
+}
+
+.field {
+  outline: none;
+  box-sizing: border-box;
+  background: none;
+  border: 2px solid #26a69a;
+  padding: 10px 5px;
+  font-size: 16px;
+
+  &--count {
+    width: 57px;
+  }
+}
