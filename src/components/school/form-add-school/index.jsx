@@ -34,23 +34,23 @@ class FormAddSchool extends Component {
 
   render() {
     return (
-      <div className={'form container--inline'}>
+      <div className="form container--inline">
         <input
-          className={'field form__field'}
-          type={'text'}
-          placeholder={'name'}
+          className="field form__field"
+          type="text"
+          placeholder="name"
           value={this.state.name}
           onChange={this.handleChangeName}
         />
         <input
-          className={'field form__field field--count'}
-          type={'text'}
+          className="field form__field field--count"
+          type="text"
           value={this.state.count}
-          placeholder={'count'}
+          placeholder="count"
           onChange={this.handleChangeCount}
         />
         <button
-          className={'button'}
+          className="button"
           onClick={this.handleClickAddBtn}
         >
           add
