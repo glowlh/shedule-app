@@ -3,8 +3,8 @@ import {addSchool as addSchoolAction} from './actions';
 
 export const addSchool = (payload) => {
   return (dispatch) => {
-    const classroomValidator = new SchoolValidator();
-    return classroomValidator.validate(payload)
+    const schoolValidator = new SchoolValidator();
+    return schoolValidator.validate(payload)
       .then(() => {
         dispatch(addSchoolAction(payload));
       });
