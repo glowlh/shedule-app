@@ -19,6 +19,7 @@
     "build": "npm run build-css && react-scripts build"
   },
   "devDependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "redux-thunk": "^2.2.0"
   }
 }

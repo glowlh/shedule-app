@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addClassroom } from '../actions';
+import { addClassroom } from '../services';
 import  './style.css';
 
 class FormAddClassroom extends Component {
@@ -23,6 +23,8 @@ class FormAddClassroom extends Component {
       name: this.state.name,
       count: this.state.count,
       description: this.state.description,
+    }).catch((err) => {
+      this.setState({validationError: err});
     });
   }
 
@@ -38,12 +40,14 @@ class FormAddClassroom extends Component {
 
   handleChangeCount(event) {
     const target = event.target;
-    this.setState({count: target.value});
+    const count = target.value;
+    this.setState({count});
   }
 
   render() {
+    const errorClassName = this.state.validationError ? 'form--invalid' : '';
     return (
-      <div className="form container--inline classroom-form">
+      <div className={`form container--inline classroom-form ${errorClassName}`}>
         <div className="container--column">
           <div className="container--inline classroom-form__top-fields">
             <input
@@ -81,9 +85,16 @@ class FormAddClassroom extends Component {
 
 FormAddClassroom.propTypes = {
   onAdd: React.PropTypes.func.isRequired,
+  validationError: React.PropTypes.object
 };
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onAdd: (payload) => dispatch(addClassroom(payload)),
+  };
+}
 
 export default connect(
   null,
-  { onAdd: addClassroom },
+  mapDispatchToProps,
 )(FormAddClassroom);

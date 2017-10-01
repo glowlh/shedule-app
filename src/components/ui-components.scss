@@ -60,6 +60,12 @@
       margin-right: 0;
     }
   }
+
+  &--invalid {
+    .field {
+      border-color: #870000;
+    }
+  }
 }
 
 .field {
