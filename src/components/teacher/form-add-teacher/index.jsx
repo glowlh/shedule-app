@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTeacher } from '../actions';
+import { addTeacher } from '../services';
 import  './style.css';
 
 class FormAddTeacher extends Component {
@@ -17,9 +17,12 @@ class FormAddTeacher extends Component {
   }
 
   handleClickAddBtn() {
+    this.setState({validationError: null});
     this.props.onAdd({
       name: this.state.name,
       description: this.state.description,
+    }).catch((err) => {
+      this.setState({validationError: err});
     });
   }
 
@@ -34,8 +37,9 @@ class FormAddTeacher extends Component {
   }
 
   render() {
+    const errorClassName = this.state.validationError ? 'form--invalid' : '';
     return (
-      <div className="form container--inline teacher-form">
+      <div className={`form container--inline teacher-form ${errorClassName}`}>
         <div className="container--column">
           <div className="teacher-form__top-fields container--inline">
             <input
@@ -66,9 +70,16 @@ class FormAddTeacher extends Component {
 
 FormAddTeacher.propTypes = {
   onAdd: React.PropTypes.func.isRequired,
+  validationError: React.PropTypes.object,
 };
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onAdd: (payload) => dispatch(addTeacher(payload)),
+  };
+}
 
 export default connect(
   null,
-  { onAdd: addTeacher },
+  mapDispatchToProps,
 )(FormAddTeacher);
