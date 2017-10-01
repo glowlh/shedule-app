@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addSchool } from '../actions';
+import { addSchool } from '../services';
 
 class FormAddSchool extends Component {
 
@@ -16,9 +16,13 @@ class FormAddSchool extends Component {
   }
 
   handleClickAddBtn() {
+    const count = parseInt(this.state.count, 10);
+    this.setState({validationError: null});
     this.props.onAdd({
       name: this.state.name,
-      count: this.state.count,
+      count,
+    }).catch((err) => {
+      this.setState({validationError: err});
     });
   }
 
@@ -33,8 +37,9 @@ class FormAddSchool extends Component {
   }
 
   render() {
+    const errorClassName = this.state.validationError ? 'form--invalid' : '';
     return (
-      <div className="form container--inline">
+      <div className={`form container--inline ${errorClassName}`}>
         <input
           className="field form__field"
           type="text"
@@ -62,9 +67,16 @@ class FormAddSchool extends Component {
 
 FormAddSchool.propTypes = {
   onAdd: React.PropTypes.func.isRequired,
+  validationError: React.PropTypes.object,
 };
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onAdd: (payload) => dispatch(addSchool(payload)),
+  };
+}
 
 export default connect(
   null,
-  { onAdd: addSchool },
+  mapDispatchToProps,
 )(FormAddSchool);
