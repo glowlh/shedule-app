@@ -19,9 +19,11 @@ class FormAddClassroom extends Component {
   }
 
   handleClickAddBtn() {
+    const count = parseInt(this.state.count, 10);
+    this.setState({validationError: null});
     this.props.onAdd({
       name: this.state.name,
-      count: this.state.count,
+      count,
       description: this.state.description,
     }).catch((err) => {
       this.setState({validationError: err});
@@ -40,8 +42,7 @@ class FormAddClassroom extends Component {
 
   handleChangeCount(event) {
     const target = event.target;
-    const count = target.value;
-    this.setState({count});
+    this.setState({count: target.value});
   }
 
   render() {
@@ -85,7 +86,7 @@ class FormAddClassroom extends Component {
 
 FormAddClassroom.propTypes = {
   onAdd: React.PropTypes.func.isRequired,
-  validationError: React.PropTypes.object
+  validationError: React.PropTypes.object,
 };
 
 function mapDispatchToProps(dispatch) {

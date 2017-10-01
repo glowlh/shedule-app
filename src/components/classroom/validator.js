@@ -34,14 +34,15 @@ class ClassroomValidator {
   }
 
   _isValidName(name) {
-    if (typeof name !== 'string') {
+    if (typeof name !== 'string' || name === '') {
       this.errors.push(`classroom name ${name} is not a String`);
       this.valid = false;
     }
   }
 
   _isValidCount(count) {
-    if (typeof count !== 'number') {
+    const parsedCount = parseInt(count, 10);
+    if (typeof count !== 'number' || count === '' || isNaN(parsedCount)) {
       this.errors.push(`classroom count ${count} is not a Number`);
       this.valid = false;
     }
