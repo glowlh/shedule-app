@@ -1,6 +1,10 @@
 import actionTypes from './types';
 
-const initialState = [];
+const initialState = [{
+  name: '30-08',
+  count: 17,
+  description: 'выпуск в декабре'
+}];
 
 const schoolReducer = (state = initialState, action) => {
   switch (action.type) {

@@ -86,7 +86,6 @@ class FormAddClassroom extends Component {
 
 FormAddClassroom.propTypes = {
   onAdd: React.PropTypes.func.isRequired,
-  validationError: React.PropTypes.object,
 };
 
 function mapDispatchToProps(dispatch) {

@@ -9,8 +9,8 @@ export const addClassroom = (payload) => {
       return Promise.reject({error: 'The classroom is not unique'});
     }
 
-    const classroomValidator = new ClassroomValidator();
-    return classroomValidator.validate(payload)
+    const validator = new ClassroomValidator();
+    return validator.validate(payload)
       .then(() => {
         dispatch(addClassroomAction(payload));
       });

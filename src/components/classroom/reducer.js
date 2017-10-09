@@ -1,6 +1,10 @@
 import actionTypes from './types';
 
-const initialState = [];
+const initialState = [{
+  name: 'Малый зал',
+  count: 30,
+  description: '137 аудитория - 1 этаж'
+}];
 
 const classroomReducer = (state = initialState, action) => {
   switch (action.type) {
