@@ -10,7 +10,7 @@ const initialState = [{
 }];
 
 const lectureReducer = (state = initialState, action) => {
-  switch (action.types) {
+  switch (action.type) {
     case actionTypes.ADD_LECTURE: {
       const item = {...action.payload};
       item.id = state.length;

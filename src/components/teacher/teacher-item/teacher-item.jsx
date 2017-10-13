@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { deleteTeacher } from '../actions';
 
 class TeacherItem extends Component {
 
-  componentWillMount() {
-    this.handleClickBtn = this.handleClickBtn.bind(this);
-  }
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    onDelete: PropTypes.func.isRequired,
+  };
 
-  handleClickBtn() {
+  handleClickBtn = () => {
     this.props.onDelete(this.props.id);
-  }
+  };
 
   render() {
     return (
@@ -34,12 +37,6 @@ class TeacherItem extends Component {
     );
   }
 }
-
-TeacherItem.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  description: React.PropTypes.string.isRequired,
-  onDelete: React.PropTypes.func.isRequired,
-};
 
 export default connect(
   null,

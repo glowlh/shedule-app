@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { addSchool } from '../services';
 
 class FormAddSchool extends Component {
+
+  static propTypes = {
+    onAdd: PropTypes.func.isRequired,
+    validationError: PropTypes.object,
+  };
 
   componentWillMount() {
     this.state = {
       name: '',
       count: '',
     };
-
-    this.handleClickAddBtn = this.handleClickAddBtn.bind(this);
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeCount = this.handleChangeCount.bind(this);
   }
 
-  handleClickAddBtn() {
+  handleClickAddBtn = () => {
     const count = parseInt(this.state.count, 10);
     this.setState({validationError: null});
     this.props.onAdd({
@@ -24,17 +26,17 @@ class FormAddSchool extends Component {
     }).catch((err) => {
       this.setState({validationError: err});
     });
-  }
+  };
 
-  handleChangeName(event) {
+  handleChangeName = (event) => {
     const target = event.target;
     this.setState({name: target.value});
-  }
+  };
 
-  handleChangeCount(event) {
+  handleChangeCount = (event) => {
     const target = event.target;
     this.setState({count: target.value});
-  }
+  };
 
   render() {
     const errorClassName = this.state.validationError ? 'form--invalid' : '';
@@ -64,11 +66,6 @@ class FormAddSchool extends Component {
     );
   }
 }
-
-FormAddSchool.propTypes = {
-  onAdd: React.PropTypes.func.isRequired,
-  validationError: React.PropTypes.object,
-};
 
 function mapDispatchToProps(dispatch) {
   return {

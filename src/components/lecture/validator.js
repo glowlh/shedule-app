@@ -99,7 +99,9 @@ class LectureValidator {
         return school && school.name;
       });
 
-      schools.indexOf(name) >= 0 ? result.push(lecture) : null;
+      if (schools.indexOf(name) >= 0) {
+        result.push(lecture);
+      }
     });
 
     return result;
@@ -123,7 +125,9 @@ class LectureValidator {
         to: currentTo,
       };
 
-      this._hasDateInterval(currentInterval, adjustedInterval) ? result.push(lecture) : null;
+      if (this._hasDateInterval(currentInterval, adjustedInterval)) {
+        result.push(lecture);
+      }
     });
 
     return result;

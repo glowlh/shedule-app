@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import FormAddSchool from './school/form-add-school/index';
 import FormAddClassroom from './classroom/form-add-classroom/index';
 import FormAddTeacher from './teacher/form-add-teacher/index';
-import FormAddLecture from './lecture/form-add-lecture';
+import FormAddLecture from './lecture/form-add-lecture/index';
 import SchoolItem from './school/school-item/index';
 import ClassroomItem from './classroom/classroom-item/index';
 import TeacherItem from './teacher/teacher-item/index';
@@ -12,6 +13,13 @@ import './ui-components.css';
 import  './style.css';
 
 class App extends Component {
+
+  static propTypes = {
+    classrooms: PropTypes.array.isRequired,
+    schools: PropTypes.array.isRequired,
+    teachers: PropTypes.array.isRequired,
+    lectures: PropTypes.array.isRequired,
+  };
 
   render() {
     const schoolList = this.props.schools &&
@@ -84,13 +92,6 @@ class App extends Component {
     )
   }
 }
-
-App.propTypes = {
-  schools: React.PropTypes.array.isRequired,
-  classrooms: React.PropTypes.array.isRequired,
-  teachers: React.PropTypes.array.isRequired,
-  lectures: React.PropTypes.array.isRequired,
-};
 
 const mapStateToProps = (state) => {
   const canAddLecture = state.schools.length &&

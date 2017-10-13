@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { addLecture } from '../services';
 import './style.css';
 
 class FormAddLecture extends Component {
+
+  static propTypes = {
+    schoolList: PropTypes.array,
+    classroomList: PropTypes.array,
+    teacherList: PropTypes.array,
+    onAdd: PropTypes.func.isRequired,
+  };
 
   componentWillMount() {
     this.state = {
@@ -14,47 +22,39 @@ class FormAddLecture extends Component {
       dateFrom: '',
       dateTo: '',
     };
-
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeDateFrom = this.handleChangeDateFrom.bind(this);
-    this.handleChangeDateTo = this.handleChangeDateTo.bind(this);
-    this.handleChangeSchool = this.handleChangeSchool.bind(this);
-    this.handleChangeTeacher = this.handleChangeTeacher.bind(this);
-    this.handleChangeClassroom = this.handleChangeClassroom.bind(this);
-    this.handleClickAddBtn = this.handleClickAddBtn.bind(this);
   }
 
-  handleChangeName(event) {
+  handleChangeName = (event) => {
     const target = event.target;
     this.setState({name: target.value});
-  }
+  };
 
-  handleChangeDateFrom(event) {
+  handleChangeDateFrom = (event) => {
     const target = event.target;
     this.setState({dateFrom: target.value});
-  }
+  };
 
-  handleChangeDateTo(event) {
+  handleChangeDateTo = (event) => {
     const target = event.target;
     this.setState({dateTo: target.value});
-  }
+  };
 
-  handleChangeSchool(event) {
+  handleChangeSchool = (event) => {
     const target = event.target;
     this.setState({schools: [target.value]});
-  }
+  };
 
-  handleChangeTeacher(event) {
+  handleChangeTeacher = (event) => {
     const target = event.target;
     this.setState({teacher: target.value});
-  }
+  };
 
-  handleChangeClassroom(event) {
+  handleChangeClassroom = (event) => {
     const target = event.target;
     this.setState({classroom: target.value});
-  }
+  };
 
-  handleClickAddBtn() {
+  handleClickAddBtn = () => {
     this.props.onAdd({
       name: this.state.name,
       dateFrom: this.state.dateFrom,
@@ -65,7 +65,7 @@ class FormAddLecture extends Component {
     }).catch((err) => {
       console.warn(err);
     });
-  }
+  };
 
   render() {
     return (
@@ -132,13 +132,6 @@ class FormAddLecture extends Component {
     )
   }
 }
-
-FormAddLecture.propTypes = {
-  schoolList: React.PropTypes.array,
-  classroomList: React.PropTypes.array,
-  teacherList: React.PropTypes.array,
-  onAdd: React.PropTypes.func.isRequired,
-};
 
 function mapStateToProps(state) {
   return {

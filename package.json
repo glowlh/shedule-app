@@ -1,11 +1,11 @@
 {
-  "name": "my-app",
+  "name": "shedule",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-scripts": "0.9.5",
+    "react": "16.0.0",
+    "react-dom": "16.0.0",
+    "react-scripts": "1.0.14",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2"
   },
@@ -19,7 +19,9 @@
     "build": "npm run build-css && react-scripts build"
   },
   "devDependencies": {
-    "prop-types": "^15.5.10",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.1.1",
+    "prop-types": "^15.6.0",
     "redux-thunk": "^2.2.0"
   }
 }
