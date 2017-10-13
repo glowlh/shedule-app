@@ -10,13 +10,11 @@ class FormAddClassroom extends Component {
     onAdd: PropTypes.func.isRequired,
   };
 
-  componentWillMount() {
-    this.state = {
-      name: '',
-      count: '',
-      description: '',
-    };
-  }
+  state = {
+    name: '',
+    count: '',
+    description: '',
+  };
 
   handleClickAddBtn = () => {
     const count = parseInt(this.state.count, 10);

@@ -10,12 +10,10 @@ class FormAddSchool extends Component {
     validationError: PropTypes.object,
   };
 
-  componentWillMount() {
-    this.state = {
-      name: '',
-      count: '',
-    };
-  }
+  state = {
+    name: '',
+    count: '',
+  };
 
   handleClickAddBtn = () => {
     const count = parseInt(this.state.count, 10);

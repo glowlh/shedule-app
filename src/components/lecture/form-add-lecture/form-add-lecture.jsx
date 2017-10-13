@@ -13,16 +13,14 @@ class FormAddLecture extends Component {
     onAdd: PropTypes.func.isRequired,
   };
 
-  componentWillMount() {
-    this.state = {
-      name: '',
-      schools: [],
-      teacher: '',
-      classroom: '',
-      dateFrom: '',
-      dateTo: '',
-    };
-  }
+  state = {
+    name: '',
+    schools: [],
+    teacher: '',
+    classroom: '',
+    dateFrom: '',
+    dateTo: '',
+  };
 
   handleChangeName = (event) => {
     const target = event.target;

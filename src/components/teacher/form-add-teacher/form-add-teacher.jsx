@@ -11,12 +11,10 @@ class FormAddTeacher extends Component {
     validationError: PropTypes.object,
   };
 
-  componentWillMount() {
-    this.state = {
-      name: '',
-      count: '',
-    };
-  }
+  state = {
+    name: '',
+    count: '',
+  };
 
   handleClickAddBtn = () => {
     this.setState({validationError: null});
