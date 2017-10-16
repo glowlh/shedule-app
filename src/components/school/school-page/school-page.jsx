@@ -11,7 +11,7 @@ class SchoolPage extends Component {
   };
 
   render() {
-    const schoolList = this.props.schools &&
+    const schoolList = this.props.items &&
       this.props.items.map((it) =>
         <SchoolItem
           key={it.id}
