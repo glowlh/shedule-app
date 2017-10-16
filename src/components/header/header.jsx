@@ -10,6 +10,14 @@ class Header extends Component {
       <header className="header">
         <nav className="header__menu menu">
           <NavLink
+            to={routerLinks.schedule}
+            exact={true}
+            className="menu__item"
+            activeClassName="menu__item--active"
+          >
+            Schedule
+          </NavLink>
+          <NavLink
             to={routerLinks.school}
             exact={true}
             className="menu__item"

@@ -1,0 +1,41 @@
+.plate {
+  padding: 20px;
+  cursor: pointer;
+  color: #777;
+  border-bottom: 1px solid #dcdcdc;
+  border-left: 4px solid rgba(#ff981e, 0);
+
+  &__left {
+    margin-right: 30px;
+  }
+
+  &__row {
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  &__inline {
+    display: flex;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  &__value {
+    font-size: 18px;
+  }
+
+  &--selected {
+    border-left: 4px solid #ff981e;
+  }
+
+  &--favorite {
+    background-color: rgba(#ff981e, 0.3);
+  }
+
+  &:hover {
+    background-color: #ececec;
+  }
+}
