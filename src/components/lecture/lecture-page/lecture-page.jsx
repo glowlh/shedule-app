@@ -13,9 +13,9 @@ class LecturePage extends Component {
 
   render() {
     const lecturesList = this.props.items &&
-      this.props.items.map((it) =>
+      this.props.items.map((it, id) =>
         <LectureItem
-          key={it.id}
+          key={id}
           id={it.id}
           name={it.name}
           dateFrom={it.dateFrom}

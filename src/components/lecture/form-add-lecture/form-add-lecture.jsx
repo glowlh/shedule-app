@@ -29,12 +29,20 @@ class FormAddLecture extends Component {
 
   handleChangeDateFrom = (event) => {
     const target = event.target;
-    this.setState({dateFrom: target.value});
+    if (!target.value) {
+      return;
+    }
+
+    this.setState({ dateFrom: target.value });
   };
 
   handleChangeDateTo = (event) => {
     const target = event.target;
-    this.setState({dateTo: target.value});
+    if (!target.value) {
+      return;
+    }
+
+    this.setState({ dateTo: target.value });
   };
 
   handleChangeSchool = (event) => {
@@ -53,13 +61,15 @@ class FormAddLecture extends Component {
   };
 
   handleClickAddBtn = () => {
+    const dateFrom = (new Date(this.state.dateFrom)).toISOString();
+    const dateTo = (new Date(this.state.dateTo)).toISOString();
     this.props.onAdd({
       name: this.state.name,
-      dateFrom: this.state.dateFrom,
-      dateTo: this.state.dateTo,
       schools: this.state.schools,
       teacher: this.state.teacher,
       classroom: this.state.classroom,
+      dateFrom,
+      dateTo,
     }).catch((err) => {
       console.warn(err);
     });
@@ -78,7 +88,7 @@ class FormAddLecture extends Component {
           />
           <input
             className="field form__field"
-            type="text"
+            type="datetime-local"
             placeholder="date from"
             value={this.state.dateFrom}
             onChange={this.handleChangeDateFrom}
@@ -87,7 +97,7 @@ class FormAddLecture extends Component {
         <div className="container--inline form__row">
           <input
             className="field form__field"
-            type="text"
+            type="datetime-local"
             placeholder="date to"
             value={this.state.dateTo}
             onChange={this.handleChangeDateTo}
