@@ -44,7 +44,6 @@ const mapStateToProps = (state) => {
   const canAddLecture = !!(state.schools.length &&
     state.teachers.length &&
     state.classrooms.length);
-  console.dir(state);
 
   return {
     items: state.lectures,
