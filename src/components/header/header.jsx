@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import routerLinks from '../../routes/path';
+import RoutePath from '../../routes/path';
 import './style.css';
 
 class Header extends Component {
@@ -10,7 +10,7 @@ class Header extends Component {
       <header className="header">
         <nav className="header__menu menu">
           <NavLink
-            to={routerLinks.schedule}
+            to={RoutePath.SCHEDULE}
             exact={true}
             className="menu__item"
             activeClassName="menu__item--active"
@@ -18,7 +18,7 @@ class Header extends Component {
             Schedule
           </NavLink>
           <NavLink
-            to={routerLinks.school}
+            to={RoutePath.SCHOOL}
             exact={true}
             className="menu__item"
             activeClassName="menu__item--active"
@@ -26,7 +26,7 @@ class Header extends Component {
             Schools
           </NavLink>
           <NavLink
-            to={routerLinks.teacher}
+            to={RoutePath.TEACHER}
             exact={true}
             className="menu__item"
             activeClassName="menu__item--active"
@@ -34,7 +34,7 @@ class Header extends Component {
             Teachers
           </NavLink>
           <NavLink
-            to={routerLinks.classroom}
+            to={RoutePath.CLASSROOM}
             exact={true}
             className="menu__item"
             activeClassName="menu__item--active"
@@ -42,7 +42,7 @@ class Header extends Component {
             Classrooms
           </NavLink>
           <NavLink
-            to={routerLinks.lecture}
+            to={RoutePath.LECTURE}
             exact={true}
             className="menu__item"
             activeClassName="menu__item--active"
