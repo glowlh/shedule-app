@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ScheduleItem from '../item';
-import { addFavorite } from '../actions';
+import { addSelected } from '../../lecture/redux/actions';
 import './style.css';
 
 class SchedulePage extends Component {
 
   static propTypes = {
     lectures: PropTypes.array,
-    onAddFavorite: PropTypes.func,
+    onAddSelected: PropTypes.func,
+    selected: PropTypes.array,
   };
 
   state = {
-    selected: new Set()
+    selected: new Set(),
   };
 
   formatDate(date) {
@@ -31,7 +32,7 @@ class SchedulePage extends Component {
   };
 
   handleClickAddFavoriteBtn = () => {
-    this.props.onAddFavorite([...this.state.selected]);
+    this.props.onAddSelected([...this.state.selected]);
   };
 
   toggleSelected(id) {
@@ -46,12 +47,12 @@ class SchedulePage extends Component {
   }
 
   render() {
-    const scheduleList = this.props.lectures.map((it, id) => {
+    const scheduleList = this.props.lectures.map((it) => {
       const dateFrom = this.formatDate(new Date(it.dateFrom));
       const dateTo = this.formatDate(new Date(it.dateTo));
       let className = '';
       const selected = [...this.state.selected];
-      const favorite = this.props.schedule.favorite;
+      const favorite = this.props.selected;
       selected.some((p) => {
         if (p === it.id) {
           className = 'plate--selected';
@@ -70,7 +71,7 @@ class SchedulePage extends Component {
       });
 
       return (
-        <div className="schedule__list">
+        <div key={it.id} className="schedule__list">
           <ScheduleItem
             classroom={it.classroom}
             dateFrom={dateFrom}
@@ -100,8 +101,8 @@ class SchedulePage extends Component {
 
 export default connect(
   (state) => ({
-    lectures: state.lectures,
-    schedule: state.schedule,
+    lectures: state.lectures.items,
+    selected: state.lectures.selected,
   }),
-  { onAddFavorite: addFavorite },
+  { onAddSelected: addSelected },
 )(SchedulePage);

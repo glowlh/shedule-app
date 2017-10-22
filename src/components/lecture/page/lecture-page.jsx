@@ -46,7 +46,7 @@ const mapStateToProps = (state) => {
     state.classrooms.length);
 
   return {
-    items: state.lectures,
+    items: state.lectures.items,
     canAddLecture,
   }
 };
