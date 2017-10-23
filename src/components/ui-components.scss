@@ -81,6 +81,12 @@
       border-color: #870000;
     }
   }
+
+  &__error {
+    color: #870000;
+    font-size: 11px;
+    font-style: italic;
+  }
 }
 
 .field {
@@ -91,7 +97,7 @@
   height: 35px;
   color: #888888;
   font-size: 14px;
-  width: 50%;
+  width: 98%;
 
   &--count {
     width: 70px;

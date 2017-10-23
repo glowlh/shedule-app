@@ -1,1 +1,1 @@
-export { default } from './form-add-classroom';
+export { default } from './form-add';

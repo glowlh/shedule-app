@@ -6,7 +6,7 @@ export const addClassroom = (payload) => {
     const classrooms = getState().classrooms;
     const isUnique = !classrooms.some(it => it.name === payload.name);
     if (!isUnique) {
-      return Promise.reject({error: 'The classroom is not unique'});
+      return Promise.reject({ error: 'The classroom is not unique' });
     }
 
     const validator = new ClassroomValidator();

@@ -13,6 +13,7 @@ class FormAddSchool extends Component {
   state = {
     name: '',
     count: '',
+    validationError: null,
   };
 
   handleClickAddBtn = () => {
@@ -38,22 +39,37 @@ class FormAddSchool extends Component {
 
   render() {
     const errorClassName = this.state.validationError ? 'form--invalid' : '';
+    const inputNameError = this.state.validationError &&
+      this.state.validationError.errors &&
+      this.state.validationError.errors.name ||
+      null;
+    const inputCountError = this.state.validationError &&
+      this.state.validationError.errors &&
+      this.state.validationError.errors.count ||
+      null;
+
     return (
       <div className={`form container--inline ${errorClassName}`}>
-        <input
-          className="field form__field"
-          type="text"
-          placeholder="name"
-          value={this.state.name}
-          onChange={this.handleChangeName}
-        />
-        <input
-          className="field form__field field--count"
-          type="text"
-          value={this.state.count}
-          placeholder="count"
-          onChange={this.handleChangeCount}
-        />
+        <div className="container--column">
+          <input
+            className="field form__field"
+            type="text"
+            placeholder="name"
+            value={this.state.name}
+            onChange={this.handleChangeName}
+          />
+          <div className="form__error">{inputNameError}</div>
+        </div>
+        <div className="container--column">
+          <input
+            className="field form__field field--count"
+            type="text"
+            value={this.state.count}
+            placeholder="count"
+            onChange={this.handleChangeCount}
+          />
+          <div className="form__error">{inputCountError}</div>
+        </div>
         <button
           className="button"
           onClick={this.handleClickAddBtn}

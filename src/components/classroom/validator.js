@@ -7,7 +7,7 @@ class ClassroomValidator {
       deferred.reject = reject;
     });
 
-    this.errors = [];
+    this.errors = {};
     this.valid = true;
 
     this._isObject(spec);
@@ -28,14 +28,14 @@ class ClassroomValidator {
 
   _isObject(spec) {
     if (!(spec instanceof Object)) {
-      this.errors.push(`classroom data ${spec} is not an Object`);
+      this.errors.object = `classroom data ${spec} is not an Object`;
       this.valid = false;
     }
   }
 
   _isValidName(name) {
     if (typeof name !== 'string' || name === '') {
-      this.errors.push(`classroom name ${name} is not a String`);
+      this.errors.name = `classroom name is not a String`;
       this.valid = false;
     }
   }
@@ -43,7 +43,7 @@ class ClassroomValidator {
   _isValidCount(count) {
     const parsedCount = parseInt(count, 10);
     if (typeof count !== 'number' || count === '' || isNaN(parsedCount)) {
-      this.errors.push(`classroom count ${count} is not a Number`);
+      this.errors.count = `classroom count is not a Number`;
       this.valid = false;
     }
   }
