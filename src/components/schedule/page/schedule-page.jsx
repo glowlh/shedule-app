@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { selectedSelector } from '../../lecture/redux/selectors';
 import ScheduleItem from '../item';
 import { addSelected } from '../../lecture/redux/actions';
 import './style.css';
@@ -102,7 +103,7 @@ class SchedulePage extends Component {
 export default connect(
   (state) => ({
     lectures: state.lectures.items,
-    selected: state.lectures.selected,
+    selected: selectedSelector(state.lectures),
   }),
   { onAddSelected: addSelected },
 )(SchedulePage);
