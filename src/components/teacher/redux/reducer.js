@@ -1,8 +1,8 @@
 import Type from './types';
 
 const initialState = [{
-  name: 'Титов Иван',
-  description: 'Элвис'
+  name: 'Сергей Сергеев',
+  description: 'Профессор МГУ'
 }];
 
 const teacherReducer = (state = initialState, action) => {
